@@ -60,8 +60,8 @@ app.get("/", (req, res) => {
 });
 // getting a single appliance
 app.get("/:id", (req, res) => {
-    const appliance = appliances.find(appliance => appliance.id == req.params.id);
-    if (!appliance) res.status(404).send('Appliance not found. :(')
+    const appliance = appliances.find(appliance => appliance.id === req.params.id);
+    if (!appliance) res.status(404).send('Appliance not found... :(')
     res.send(appliance)
 });
 // adding an appliance
@@ -70,7 +70,7 @@ app.post("/", (req, res) => {
         id: appliances.length + 1,
         title: req.body.title,
         img: req.body.img,
-        features: req.body,features,
+        features: req.body.features,
         price: req.body.price
     }
     appliances.push(appliance);
