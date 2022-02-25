@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs')
 const express = require('express')
 const router = express.Router()
 const allUsers = require("../model/User")
@@ -21,13 +22,20 @@ router.get('/:id', getUser, (req,res) => {
     res.json(res.user)
 });
 
+// //encrypt passwords
+// const salt = bcrypt.genSalt(10)
+// const hashedPassword = bcrypt.hash(req.body.password, salt);
+
 //update user
-router.put('/:id', (req,res) => {
+router.put('/:id', async (req,res) => {
+    //encrypt passwords
+const salt = await bcrypt.genSalt(10)
+const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     const userDetails = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: hashedPassword
     };
     User.findByIdAndUpdate(req.params.id, { $set:userDetails }, { new: true }, (err, data) => {
         if(!err) {
