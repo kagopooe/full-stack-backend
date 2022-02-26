@@ -33,9 +33,11 @@ const salt = await bcrypt.genSalt(10)
 const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     const userDetails = {
-        name: req.body.name,
+        fullname: req.body.name,
         email: req.body.email,
-        password: hashedPassword
+        phone_number: req.body.phone_number,
+        password: hashedPassword,
+        
     };
     User.findByIdAndUpdate(req.params.id, { $set:userDetails }, { new: true }, (err, data) => {
         if(!err) {

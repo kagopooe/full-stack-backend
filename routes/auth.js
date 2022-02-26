@@ -23,8 +23,9 @@ const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
 //create a new user
 const user = new User({
-        name: req.body.name,
+        fullname: req.body.fullname,
         email: req.body.email,
+        phone_number: req.body.phone_number,
         password: hashedPassword
 });
     try {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: {
+    fullname: {
         type: String,
         required: true,
         min: 6,
@@ -19,10 +19,22 @@ const userSchema = new mongoose.Schema({
         max: 1024,
         min: 6
     },
-    date: {
+    phone_number: {
+        type: String,
+        required: true,
+        max:10
+
+    },
+    join_date: {
         type: Date,
         default: Date.now
+    },
+    cart: {
+        type: Array,
+        required: false,
+        default: []
     }
+
 });
 
 module.exports = mongoose.model('User', userSchema)
