@@ -49,6 +49,18 @@ const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
 });
 
+//delete user
+router.delete("/:id", (req,res) => {
+    User.findByIdAndRemove(req.params.id, (err, data) => {
+        if(data == null) {
+            res.status(404).json({ message: "User not found/does not exist"})
+        }else {
+            res.status(200).json({message: "User deleted Successfully"})
+        }
+    })
+
+});
+
 async function getUser(req, res, next) {
     let user
     try {
