@@ -33,9 +33,11 @@ const salt = await bcrypt.genSalt(10)
 const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     const userDetails = {
-        name: req.body.name,
+        fullname: req.body.name,
         email: req.body.email,
-        password: hashedPassword
+        phone_number: req.body.phone_number,
+        password: hashedPassword,
+        
     };
     User.findByIdAndUpdate(req.params.id, { $set:userDetails }, { new: true }, (err, data) => {
         if(!err) {
@@ -44,6 +46,18 @@ const hashedPassword = await bcrypt.hash(req.body.password, salt);
             console.log(err);
         }
     });
+
+});
+
+//delete user
+router.delete("/:id", (req,res) => {
+    User.findByIdAndRemove(req.params.id, (err, data) => {
+        if(data == null) {
+            res.status(404).json({ message: "User not found/does not exist"})
+        }else {
+            res.status(200).json({message: "User deleted Successfully"})
+        }
+    })
 
 });
 

@@ -1,9 +1,7 @@
 const express = require('express');
 // const cors = require('cors');
 const mongoose = require('mongoose');
-const gamingRouter = require('./route/gamingRoute');
-const electronicRouter = require('./route/electronicRoute');
-const appliancesRouter = require('./route/appliancesRoute')
+const products = require('./routes/products')
 require('dotenv').config();
 
 const app = express();
@@ -20,9 +18,8 @@ app.get("/", (req, res) => {
     res.send({msg:"Welcome to Bongani and Kago's Back-end!"});
 })
 
-app.use("/appliances", appliancesRouter);
-app.use("/electronics", electronicRouter);
-app.use("/gaming", gamingRouter)
+app.use("/products", products)
+app.use("/users", usersRouter);
 
 const port = process.env.PORT || 3100;
 app.listen(port, console.log(`Listening on port ${port}...`));
