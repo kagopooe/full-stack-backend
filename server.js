@@ -17,12 +17,12 @@ app.use(express.json());
 // app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send({msg:"Welcome to Bongani's Back-end!"});
+    res.send({msg:"Welcome to Bongani and Kago's Back-end!"});
 })
 
 app.use("/appliances", appliancesRouter);
 app.use("/electronics", electronicRouter);
 app.use("/gaming", gamingRouter)
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3100;
 app.listen(port, console.log(`Listening on port ${port}...`));
