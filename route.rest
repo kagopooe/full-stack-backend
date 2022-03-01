@@ -1,0 +1,12 @@
+GET http://localhost:3100/
+###
+
+GET http://localhost:3100/products
+###
+
+POST http://localhost:3100/products
+Content-Type: application/json
+
+{
+    
+}

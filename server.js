@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/products", products)
-app.use("/users", usersRouter);
+// app.use("/users", users);
 
 const port = process.env.PORT || 3100;
 app.listen(port, console.log(`Listening on port ${port}...`));

@@ -167,8 +167,8 @@ app.get("/", (req, res) => {
 });
 // getting a single product
 app.get("/:id", (req, res) => {
-    const product = products.find(appliance => product.id === req.params.id);
-    if (!product) res.status(404).send('Appliance not found... :(')
+    const product = products.find(product => product.id === req.params.id);
+    if (!product) res.status(404).send('Product not found... :(')
     res.send(product)
 });
 // adding an appliance
@@ -192,9 +192,9 @@ app.put("/:id", (req, res) => {
 });
 // removing an product
 app.delete("/:id", (req, res) => {
-    aproduct = products.filter((product) => product.id != req.params.id);
+    product = products.filter((product) => product.id != req.params.id);
     fixArrayId(products);
-    res.send({ msg: "Appliances removed." })
+    res.send({ msg: "Products removed." })
 })
 
 module.exports = app
