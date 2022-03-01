@@ -1,10 +1,10 @@
-GET http://localhost:3100/
+GET http://localhost:8081/
 ###
 
-GET http://localhost:3100/products
+GET http://localhost:8081/products
 ###
 
-POST http://localhost:3100/products
+POST http://localhost:8081/products
 Content-Type: application/json
 
 {
