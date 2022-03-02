@@ -7,11 +7,19 @@ const productsSchema = new mongoose.Schema({
         min: 5,
         max: 300
     },
-    features: {
+    category: {
+        type: String,
+        required: true,
+    },
+    description: {
         type: String,
         required: true,
         min: 5,
         max: 300
+    },
+    img: {
+        type: String,
+        required: true
     },
     price: {
         type: Number,
@@ -22,6 +30,11 @@ const productsSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+
+    created_by: {
+        type: String,
+        required: true
     }
 })
 

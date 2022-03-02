@@ -7,7 +7,10 @@ router.get('/', verify, (req,res) => {
 
 });
 
+//check to make sure header is not undefined
+//  const  checkToken = (req, res, next) => {
 
+//  }
 
 
 module.exports = router;
