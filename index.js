@@ -24,7 +24,7 @@ app.use(cors());
 //route middleware
 app.get('/',(req,res) => {
     res.send(
-        {msg: "register - POST user/register, login- POST user/login, get all users - GET /users, get single user - GET /users/:id, update user - PUT /users/:id, delete user - DELETE /users/:id, products - GET /products, single product - GET /products/:id, add product - POST /products, update product - PATCH /products/:id, remove product - DELETE /products/:id, get items in cart - GET /cart, add to cart - POST /cart, clear cart - DELETE /cart, remove item in cart   "})
+        {msg: "register - POST user/register, login- POST user/login, get all users - GET /users, get single user - GET /users/:id, update user - PUT /users/:id, delete user - DELETE /users/:id, products - GET /products, single product - GET /products/:id, add product - POST /products, update product - PATCH /products/:id, remove product - DELETE /products/:id, get items in cart - GET /cart, add to cart - POST /cart, clear cart - DELETE /cart, remove item in cart - PATCH /cart/:id, change item qty in cart - PUT /cart/:id  "})
 })
 
 // route middleware
