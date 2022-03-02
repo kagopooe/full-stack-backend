@@ -39,7 +39,7 @@ const hashedPassword = await bcrypt.hash(req.body.password, salt);
         password: hashedPassword,
         
     };
-    User.findByIdAndUpdate(req.params.id, { $set:userDetails }, { new: true }, (err, data) => {
+    User.findByIdAndUpdate(req.params._id, { $set:userDetails }, { new: true }, (err, data) => {
         if(!err) {
             res.status(200).json({ code:200, message: "User updated successfully", updateUser: data })
         } else {
@@ -51,7 +51,7 @@ const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
 //delete user
 router.delete("/:id", (req,res) => {
-    User.findByIdAndRemove(req.params.id, (err, data) => {
+    User.findByIdAndRemove(req.params._id, (err, data) => {
         if(data == null) {
             res.status(404).json({ message: "User not found/does not exist"})
         }else {
@@ -78,3 +78,4 @@ async function getUser(req, res, next) {
 }
 
 module.exports = router
+module.exports.getUser = getUser

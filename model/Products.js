@@ -24,8 +24,7 @@ const productsSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        min: 6,
-        max: 50
+        min: 0.99
     },
     date: {
         type: Date,

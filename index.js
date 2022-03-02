@@ -8,6 +8,7 @@ const authRoute = require('./routes/auth')
 const postRoute = require('./routes/posts');
 const productsRoute = require('./routes/products')
 const usersRoute = require('./routes/users')
+const cartRoute = require('./routes/cart')
 const res = require('express/lib/response');
 
 dotenv.config();
@@ -23,33 +24,16 @@ app.use(express.json());
 app.use(cors());
 //route middleware
 app.get('/',(req,res) => {
-    res.send({msg: "List of routes: signup - /user/register; login - user/login"})
+    res.send({msg:
+         "List of routes: signup - POST /user/register; login - POST user/login; get all users - GET /users "})
 })
 
-// app.get('/api:id', (req,res) )
-
+// route middleware
 app.use('/user', authRoute)
-app.use('/posts', postRoute) //private route
+app.use('/posts', postRoute) //private route - test
 app.use('/users', usersRoute)
 app.use('/products', productsRoute)
-
-
-
-
-//route middleware
-// app.use('/api/user', authRoute);
-
-
-
-
-
-
-
-
-
-
-
-
+app.use('/user/cart', cartRoute)
 
 
 

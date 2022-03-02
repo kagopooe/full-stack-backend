@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
     if(!validPass) return res.status(400).send('Invalid password')
     
     //create and assign token - login token used in front-end
-    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({_id: user._id, cart: user.cart}, process.env.TOKEN_SECRET);
     res.header('auth-token', token).send(token)
 
     
@@ -65,4 +65,4 @@ router.post('/login', async (req, res) => {
 
 
 
-module.exports = router;
+module.exports = router

@@ -29,7 +29,7 @@ router.post("/", verify, async (req, res) => {
         description,
         img,
         price,
-        created_by: req.id
+        created_by: req.decoded._id
     })
     try {
         const newProduct = await product.save()
@@ -42,7 +42,7 @@ router.post("/", verify, async (req, res) => {
 router.patch("/:id", verify, getProduct, async (req, res) => {
     let { title, category, description, img, price} = req.body
         try{
-            if(req.decoded.id != res.product.created_by) {
+            if(req.decoded._id != res.product.created_by) {
                 return res.status(401).send({ message: "Unauthorized" })
             }
             if(title) {
@@ -67,7 +67,7 @@ router.patch("/:id", verify, getProduct, async (req, res) => {
 // removing a product
 router.delete("/:id", getProduct, verify, async (req, res) => {
     try {
-        if(req.decoded.id != res.product.created_by){
+        if(req.decoded._id != res.product.created_by){
             return res.status(401).send({ message: Unauthorized });
         }
         await res.product.remove()
