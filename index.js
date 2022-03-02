@@ -25,7 +25,7 @@ app.use(cors());
 //route middleware
 app.get('/',(req,res) => {
     res.send({msg:
-         "List of routes: signup - POST /user/register; login - POST user/login; get all users - GET /users "})
+         "List of routes: signup - POST /user/register; login - POST user/login; get all users - GET /users ; get user by id - GET /users/:id ;  "})
 })
 
 // route middleware
