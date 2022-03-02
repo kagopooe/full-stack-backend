@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Product = require('../model/Products');
 const product = require('../model/Products')
-const fixArrayId = require("../helpers");
 const verify = require("./verifyToken");
 const verifyToken = require("./verifyToken");
 

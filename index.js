@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 //importing routes
 const authRoute = require('./routes/auth')
-const postRoute = require('./routes/posts');
 const productsRoute = require('./routes/products')
 const usersRoute = require('./routes/users')
 const cartRoute = require('./routes/cart')
@@ -25,12 +24,11 @@ app.use(cors());
 //route middleware
 app.get('/',(req,res) => {
     res.send({msg:
-         "List of routes: signup - POST /user/register; login - POST user/login; get all users - GET /users ; get user by id - GET /users/:id ;  "})
+         "List of routes: signup - POST /user/register; login - POST user/login; get all users - GET /users ; get user by id - GET /users/:id ; update user - PUT /users/:id;  delete user - DELETE /users/:id "})
 })
 
 // route middleware
 app.use('/user', authRoute)
-app.use('/posts', postRoute) //private route - test
 app.use('/users', usersRoute)
 app.use('/products', productsRoute)
 app.use('/user/cart', cartRoute)
