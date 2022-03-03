@@ -52,7 +52,7 @@ router.post('/login', async (req, res) => {
     
     //create and assign token - login token used in front-end
     const token = jwt.sign({_id: user._id, cart: user.cart}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token)
+    res.header('auth-token', token).send({message: token})
 
     
 
