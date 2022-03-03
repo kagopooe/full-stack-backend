@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 //getting one
 router.get('/:id', getUser, (req,res) => {
-    res.json(res.user)
+    res.json({message: res.user})
 });
 
 // //encrypt passwords

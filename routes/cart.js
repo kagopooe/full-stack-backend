@@ -8,7 +8,7 @@ const User = require("../model/User");
 
 //get all items in cart
 router.get("/", verify, async (req, res) => {
-  res.send(req.decoded.cart);
+  res.send({message: req.decoded.cart});
 });
 
 //add item to cart

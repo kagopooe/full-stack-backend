@@ -17,7 +17,7 @@ router.get("/", verify, async (req, res) => {
 });
 // getting a single product
 router.get("/:id", getProduct, verify, (req, res) => {
-    res.json(res.product)
+    res.json({message: res.product})
 });
 // adding an appliance
 router.post("/", verify, async (req, res) => {
