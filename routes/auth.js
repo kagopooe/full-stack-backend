@@ -10,11 +10,11 @@ router.post('/register', async (req,res) => {
     //user validation
 
 const {error} = registerValidation(req.body)
-if(error) return res.status(400).send(error.details[0].message);
+if(error) return res.status(400).send({message: error.details[0].message});
 
 //checking if user already exists
 const emailExist = await User.findOne({email: req.body.email});
-if (emailExist) return res.status(400).send('Email already exists');
+if (emailExist) return res.status(400).send({message: 'Email already exists'});
 
 //encrypt passwords
 const salt = await bcrypt.genSalt(10)
@@ -32,7 +32,7 @@ const user = new User({
         const savedUser = await user.save();
         res.send({ user: user._id})
     }catch(err) {
-        res.status(400).send(err);
+        res.status(400).send({message:err});
     }
 });
 
@@ -41,14 +41,14 @@ router.post('/login', async (req, res) => {
 //user validation
 // const {error} = schema.validate(req.body);
     const {error} = loginValidation(req.body)
-    if(error) return res.status(400).send(error.details[0].message);
+    if(error) return res.status(400).send({message: error.details[0].message});
     //checking if email already exists
     const user = await User.findOne({email: req.body.email});
-    if (!user) return res.status(400).send('Incorrect email or password');
+    if (!user) return res.status(400).send({message:'Incorrect email or password'});
 
     //is password correct
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if(!validPass) return res.status(400).send('Invalid password')
+    if(!validPass) return res.status(400).send({message: 'Invalid password'})
     
     //create and assign token - login token used in front-end
     const token = jwt.sign({_id: user._id, cart: user.cart}, process.env.TOKEN_SECRET);
